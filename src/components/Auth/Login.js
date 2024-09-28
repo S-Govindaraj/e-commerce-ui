@@ -22,14 +22,23 @@ function Login({setIsLoggedIn}) {
       
       const response = await loginAPi.login(data);
       const responseData = response.data;
-      console.log(toast);
+      debugger
 
-      if (responseData.data !== "") {
+      if (responseData.token) {
         setIsLoggedIn(true);
         navigate('/cart'); // Redirect to the cart page
-        alert(`Login Successfully!`)
+        toast.success("Login Successfully", {
+          position: "top-right",    // Change the position
+          autoClose: 1000,           // Set duration to 1 seconds
+          hideProgressBar: false,    // Show progress bar
+          closeOnClick: true,        // Close on click
+          pauseOnHover: true,        // Pause the timer when hovered
+          draggable: true,           // Allow dragging the toast
+          progress: undefined,       // Progress bar is automatically handled
+          className: "my-custom-toast",  // Custom CSS class for styling
+          bodyClassName: "my-custom-toast-body",
+        });
       }
-      debugger
       localStorage.setItem("token", response.data.token);
     } catch (error) {
       alert(`Login Failed!`)
