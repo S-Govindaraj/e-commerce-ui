@@ -9,10 +9,10 @@ import {
 import { ToastContainer } from "react-toastify";
 import "./App.css";
 import Login from "./components/Auth/Login";
-import Dashboard from "./components/Cart/dashboard";
+import Dashboard from "./components/dashboard/dashboard";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = React.useState(false);
+  // const [isLoggedIn, setIsLoggedIn] = React.useState(false);
   debugger;
   return (
     <Router>
@@ -20,13 +20,14 @@ function App() {
       <Routes>
         <Route
           path="/login"
-          element={<Login setIsLoggedIn={setIsLoggedIn} />}
+          element={<Login />}
         />
         <Route
-          path="/cart"
-          element={isLoggedIn ? <Dashboard /> : <Navigate to="/login" />}
+          path="/cart/*"
+          element= { <Dashboard />}
         />
         <Route path="/" element={<Navigate to="/login" />} />
+        
       </Routes>
     </Router>
   );
