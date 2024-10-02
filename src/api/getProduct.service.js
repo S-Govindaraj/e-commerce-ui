@@ -1,11 +1,10 @@
 import axios from "axios";
+import authHeader from "./Auth.header";
 class getProductService {
   getProductList() {
-    const headers = {
-      Authorization: `Bearer ${localStorage.getItem("token")}`, // Replace 'token' with your actual token storage key
-    };
-
-    return axios.get("http://127.0.0.1:3005/api/product", { headers });
+    console.log(JSON.stringify({ headers: authHeader() }))
+    return axios.get("http://127.0.0.1:3005/api/product", { headers: authHeader() });
+   
   }
 }
 export default new getProductService();

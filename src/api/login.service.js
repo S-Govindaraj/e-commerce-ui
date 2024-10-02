@@ -4,7 +4,6 @@ const crypto = require("crypto-js");
 const password = 'd6F3Efeq'
 class loginService {
 login(data) {
-  debugger
   console.log(password)
     var CiperText = crypto.AES.encrypt(JSON.stringify(data), password).toString();
     var payLoad = {
